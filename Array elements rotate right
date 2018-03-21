@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+//亦或交换数据位置
+//define wasp(a,b) a^=b,b^=a,a^=b
+int main()
+{
+//数组元素循环右移问题
+    int N,M,counter,i = 0,k;
+    printf("please input N(1<=N<=100) and M(M>=0&&M<N):");
+    scanf("%d%d",&N,&M);
+//对数据的有效性进行验证;
+    if(N<1||N>100||M<0||M>N)
+    {
+        printf("Data Wrong");
+        return 0;
+    }
+    //输入数据
+    int data[N];
+    printf("Please input %d number.\n",N);
+    for(counter = 0; counter < N; counter++)
+    {
+        scanf("%d",&data[counter]);
+    }
+
+//数组循环右移一位
+    /*
+    int temp;
+    temp = data[N-1];
+    for(i = N-1; i>0; i--)
+    {
+        data[i] = data [i-1];
+    }
+    data[0]= temp;
+    */
+    //数组循环右移M位
+        int temp;
+        for(k = 1;k <= M;k++)
+        {
+            temp = data[N-1];
+    for(i = N-1; i>0; i--)
+    {
+        data[i] = data [i-1];
+    }
+    data[0]= temp;
+    printf("第%d次移动\n",k);//test
+        }
+
+//输出移位后数组
+    for(counter = 0; counter < N; counter++)
+    {
+        printf("%d\t",data[counter]);
+    }
+    return 0;
+
+}
